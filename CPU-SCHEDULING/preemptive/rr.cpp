@@ -14,13 +14,6 @@ struct process
     int pid, arrivaltime, bt, completionTime, wt, tat, startTime, remainingtime;
 };
 
-// struct cmp
-/* {
-    bool operator()(process a, process b)
-    {
-        return a.remainingtime > b.remainingtime;
-    }
-}; */
 
 void displayQueue(queue<process> rq)
 {

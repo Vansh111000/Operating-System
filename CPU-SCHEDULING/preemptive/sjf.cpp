@@ -40,13 +40,14 @@ int main()
 
     for (size_t i = 0; i < n; i++)
     {
-        cout << "\nThe current process : " << i << endl;
+        cout << "\nThe current process : " << (i + 1)<< endl;
         p[i].pid = i + 1;
         cout << "Enter the Process " << i + 1 << " Arrival time : ";
         cin >> p[i].arrivaltime;
         cout << "Enter the process " << i + 1 << " Burst time : ";
         cin >> p[i].bt;
         p[i].remainingtime = p[i].bt;
+        p[i].startTime = -1;
     }
 
     sort(p.begin(), p.end(), [](process a, process b)
@@ -87,10 +88,9 @@ int main()
         if (current.startTime == -1)
             current.startTime = currentTime;
 
-        // currentTime += current.bt;
+
         currentTime++;
         current.remainingtime--;
-        // cout << current.remainingtime << " \n";
         exeorder.push_back(current);
         readyQueue.pop();
 
@@ -136,6 +136,8 @@ int main()
              << i.wt << endl;
     }
 
+    double ffs = (double)ttat/n;
+    cout<<ffs<<endl;
     cout << fixed << setprecision(6);
     cout << "Average Turnaround time: " << (float)ttat / n << endl;
     cout << "Average Waiting Time: " << (float)twt / n << endl;
